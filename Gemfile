@@ -43,6 +43,9 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem "foreman"
+gem 'devise'
+gem 'devise_token_auth'
+gem 'rack-cors'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
