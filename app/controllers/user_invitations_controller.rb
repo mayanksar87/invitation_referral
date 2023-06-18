@@ -3,14 +3,20 @@ class UserInvitationsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		render json: UserInvitation.all, status: :ok
+		user_invitations = UserInvitation.all
+		render json: UserInvitationSerializer.new(user_invitations), status: :ok
 	end
 
 	def create
 		user_invitation = UserInvitation.new(user_invitation_params)
 		user_invitation.referred_from = current_user.id
-		render json: user_invitation.as_json, status: :ok if user_invitation.save
+		if user_invitation.save
+			render json: UserInvitationSerializer.new(user_invitation), status: :ok
+		else
+			render json: { errors: user_invitation.errors }, status: :unprocessable_entity
+		end
 	end
+	
 
 	private
 

@@ -30,6 +30,10 @@ gem "jbuilder"
 #for sent mail functionality
 gem 'letter_opener'
 
+#use serializer
+gem 'jsonapi-serializer'
+
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

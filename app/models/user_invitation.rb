@@ -16,6 +16,6 @@ class UserInvitation < ApplicationRecord
   end
 
   def update_user_invitation_status
-    update(status: sent)
+    update(status: 'sent')
 	end
 end
