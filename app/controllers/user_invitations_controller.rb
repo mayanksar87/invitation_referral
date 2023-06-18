@@ -8,6 +8,7 @@ class UserInvitationsController < ApplicationController
 
 	def create
 		user_invitation = UserInvitation.new(user_invitation_params)
+		user_invitation.referred_from = current_user.id
 		render json: user_invitation.as_json, status: :ok if user_invitation.save
 	end
 

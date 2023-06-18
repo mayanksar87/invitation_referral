@@ -5,4 +5,5 @@ class UserInvitation < ApplicationRecord
         }, _default: 'pending'
         
   validates :email, presence: true, uniqueness: true
+	belongs_to :referrer, class_name: 'User', foreign_key: :referred_from
 end
