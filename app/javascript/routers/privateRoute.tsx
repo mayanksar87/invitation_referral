@@ -8,7 +8,6 @@ interface Props {
 
 const PrivateRoute: React.FC<Props> = ({ component: RouteComponent }) => {
   const isAuthenticated = localStorage.getItem('token');
-
   if (isAuthenticated) {
     return <RouteComponent />
   }

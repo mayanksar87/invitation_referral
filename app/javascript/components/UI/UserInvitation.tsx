@@ -11,7 +11,7 @@ import { invitationSchema } from "../../utils";
 import Error from "../Error";
 import axios from "axios";
 
-type HeadersInit = Headers | string[][] | { [key: string]: string };
+type HeadersInit = Headers | string[][] | { [key: string]: string | null};
 
 interface Invitation {
   email: string;
@@ -30,11 +30,17 @@ const defaultTheme = createTheme({
 });
 
 export default function UserInvitation({setOpen}:PropsType) {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("Authorization");
+  const uid = localStorage.getItem("uid");
+  const client = localStorage.getItem("client");
+  const accessToken = localStorage.getItem("token");
 
   const headers: HeadersInit = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
+    uid: uid,
+    client: client,
+    "access-token": accessToken
   };
 
   const formik = useFormik({

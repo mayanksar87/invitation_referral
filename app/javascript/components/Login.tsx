@@ -3,7 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
+// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -15,7 +15,7 @@ import { signInSchema } from "../utils";
 import Error from "../components/Error";
 import axiosInstance from "../api";
 import { AxiosResponse } from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from './UI/Header';
 interface Login {
   email: string;
@@ -35,10 +35,13 @@ export default function SignIn() {
     validationSchema: signInSchema,
     onSubmit: (values: Login) => {
       axiosInstance
-        .post("/auth/sign_in", values)
+        .post("/auth/sign_in", {
+          email: values.email,
+          password: values.password
+        })
         .then((response: AxiosResponse) => {
           localStorage.setItem('Authorization', response.headers.authorization);
-          localStorage.setItem('access-token', (response.headers)['access-token']);
+          localStorage.setItem('token', response.headers['access-token']);
           localStorage.setItem('uid', response.headers.uid);
           localStorage.setItem('client', response.headers.client);
           navigate("/dashboard");
@@ -117,9 +120,9 @@ export default function SignIn() {
               </Button>
               <Grid container>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Don't have an account? Sign Up"}
-                  </Link>
+                <Link to="/signup">
+                {"Don't have an account? Sign Up"}
+               </Link>
                 </Grid>
               </Grid>
             </Box>

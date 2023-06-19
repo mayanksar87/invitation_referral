@@ -21,7 +21,7 @@ type rowType = {
 };
 
 function Dashboard() {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("Authorization");
   const [rowData, setRowData] = useState<Array<any>>([]);
   const [open, setOpen] = useState<boolean>(false);
 
@@ -42,12 +42,11 @@ function Dashboard() {
 
   useEffect(() => {
     axios.get("/user_invitations", { headers: headers }).then((response) => {
-      setRowData(response.data);
+      setRowData(response.data.data);
     });
   }, [token, open]);
 
   const classes = useStyles();
-
   return (
     <div>
       <Header open={open} setOpen={setOpen} />
@@ -69,19 +68,19 @@ function Dashboard() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rowData?.map((row: rowType) => (
+              {rowData && rowData?.map((row: rowType) => (
                 <TableRow
                   key={row.id}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row">
-                    {row.email}
+                    {row.attributes.email}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {row.status}
+                    {row.attributes.status}
                   </TableCell>
                   <TableCell component="th" scope="row">
-                    {new Date(row.created_at).toLocaleDateString()}
+                    {new Date(row.attributes.created_at).toLocaleDateString()}
                   </TableCell>
                 </TableRow>
               ))}

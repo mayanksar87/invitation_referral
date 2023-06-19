@@ -1,6 +1,6 @@
 module Users
   class RegistrationsController < DeviseTokenAuth::ApplicationController
-    # before_action :authenticate_user!, except: :create
+    before_action :authenticate_user!, except: :create
     protect_from_forgery with: :null_session
     before_action :set_referral
 

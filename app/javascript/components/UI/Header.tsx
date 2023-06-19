@@ -5,9 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { Modal } from "@mui/material";
 import UserInvitation from "./UserInvitation";
-// import Model from "./Model";
+import Model from "./Model";
 interface pageProp {
   title: string;
   handleClick: Function;
@@ -79,9 +78,9 @@ function Header({ open = false, setOpen = (param) => {} }) {
         </Toolbar>
       </Container>
 
-      {/* <Model handleClose={handleClose} open={open}>
+      <Model handleClose={handleClose} open={open}>
         <UserInvitation setOpen={setOpen} />
-      </Model> */}
+      </Model>
     </AppBar>
   );
 }

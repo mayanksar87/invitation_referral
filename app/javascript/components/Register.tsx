@@ -38,11 +38,14 @@ export default function SignUp() {
     },
     validationSchema:signUpSchema,
     onSubmit: (values: SignUp) => {
-      axiosInstance.post('/auth', values
-        // "user_invitation_token": params.get('user_invitation_token')
-      )
+      axiosInstance.post('/auth', { 
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+      user_invitation_token: params.get("user_invitation_token")
+    })
       .then((response: AxiosResponse) => {
-        navigate("/login");
+        navigate("/dashboard");
       })
       .catch((error) => {
         console.error(error);

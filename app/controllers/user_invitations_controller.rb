@@ -3,7 +3,7 @@ class UserInvitationsController < ApplicationController
 	before_action :authenticate_user!
 
 	def index
-		user_invitations = UserInvitation.all
+		user_invitations = current_user.user_invitations
 		render json: UserInvitationSerializer.new(user_invitations), status: :ok
 	end
 
