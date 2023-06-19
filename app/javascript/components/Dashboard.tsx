@@ -60,11 +60,11 @@ function Dashboard() {
             sx={{ minWidth: 650 }}
             aria-label="simple table"
           >
-            <TableHead sx={{ backgroundColor: "#7cb342" }}>
+            <TableHead sx={{ backgroundColor: "#4aedc4" }}>
               <TableRow>
-                <TableCell component="th">Email</TableCell>
-                <TableCell component="th">Status</TableCell>
-                <TableCell component="th">Date</TableCell>
+                <TableCell component="th">Invited Email</TableCell>
+                <TableCell component="th">Invitation Status</TableCell>
+                <TableCell component="th">Invitation Date</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

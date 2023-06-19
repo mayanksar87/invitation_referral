@@ -21,8 +21,13 @@ interface Login {
   email: string;
   password: string;
 }
-
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#14a37f"
+    },
+  },
+});
 
 export default function SignIn() {
   localStorage.removeItem('token');
@@ -69,7 +74,7 @@ export default function SignIn() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "#4aedc4" }}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -110,7 +115,6 @@ export default function SignIn() {
                 value={values.password}
               />
               <Button
-                color="secondary"
                 type="submit"
                 fullWidth
                 variant="contained"

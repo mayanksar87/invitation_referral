@@ -23,7 +23,13 @@ interface SignUp {
   password_confirmation: string;
 }
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#14a37f"
+    },
+  },
+});
 
 export default function SignUp() {
   localStorage.removeItem('token');
@@ -42,7 +48,7 @@ export default function SignUp() {
       email: values.email,
       password: values.password,
       password_confirmation: values.password_confirmation,
-      user_invitation_token: params.get("user_invitation_token")
+      user_invitation_token: params.get("invitation_token")
     })
       .then((response: AxiosResponse) => {
         navigate("/dashboard");
@@ -68,7 +74,7 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: "#4aedc4" }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -129,7 +135,6 @@ export default function SignUp() {
               <Error error={errors?.password_confirmation} touched={touched?.password_confirmation}/>
             </Grid>
             <Button
-              color="secondary"
               type="submit"
               fullWidth
               variant="contained"

@@ -27,13 +27,13 @@ function Header({ open = false, setOpen = (param) => {} }) {
           },
         },
         {
-          title: "Invite Friend",
+          title: "Invitation",
           handleClick: () => {
             setOpen(true);
           },
         },
         {
-          title: "Logout",
+          title: "Signout",
           handleClick: () => {
             navigate("/signin");
             localStorage.removeItem("token");
