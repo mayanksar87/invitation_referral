@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { signInSchema } from "../utils";
-import Error from "../components/error";
+import Error from "../components/Error";
 import axiosInstance from "../api";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
@@ -35,11 +35,12 @@ export default function SignIn() {
     validationSchema: signInSchema,
     onSubmit: (values: Login) => {
       axiosInstance
-        .post("/users/sign_in", {
-          "user": values
-        })
+        .post("/auth/sign_in", values)
         .then((response: AxiosResponse) => {
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('Authorization', response.headers.authorization);
+          localStorage.setItem('access-token', (response.headers)['access-token']);
+          localStorage.setItem('uid', response.headers.uid);
+          localStorage.setItem('client', response.headers.client);
           navigate("/dashboard");
         })
         .catch((error) => {

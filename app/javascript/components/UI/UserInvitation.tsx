@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { invitationSchema } from "../../utils";
-import Error from "./Error";
+import Error from "../Error";
 import axios from "axios";
 
 type HeadersInit = Headers | string[][] | { [key: string]: string };

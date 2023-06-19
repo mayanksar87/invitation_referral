@@ -12,7 +12,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useFormik } from "formik";
 import { signUpSchema } from "../utils";
-import Error from "../components/error";
+import Error from "../components/Error";
 import axiosInstance from "../api";
 import { AxiosResponse } from "axios";
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
@@ -38,13 +38,11 @@ export default function SignUp() {
     },
     validationSchema:signUpSchema,
     onSubmit: (values: SignUp) => {
-      axiosInstance.post('/users', {
-        "user": values,
-        "user_invitation_token": params.get('user_invitation_token')
-      })
+      axiosInstance.post('/auth', values
+        // "user_invitation_token": params.get('user_invitation_token')
+      )
       .then((response: AxiosResponse) => {
-        localStorage.setItem('token', response.data.token);
-        navigate("/dashboard");
+        navigate("/login");
       })
       .catch((error) => {
         console.error(error);

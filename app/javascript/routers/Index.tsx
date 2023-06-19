@@ -5,7 +5,7 @@ import Register from "../components/Register";
 import Home from "../components/Dashboard";
 import PrivateRoute from "./privateRoute";
 
-function Index() {
+const PageRoutes = () => {
   return (
     <Router>
       <Routes>
@@ -21,4 +21,5 @@ function Index() {
   );
 }
 
-export default Index;
+export default PageRoutes;
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import PageRoutes from '../routers';
+import PageRoutes from '../routers/Index';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 
