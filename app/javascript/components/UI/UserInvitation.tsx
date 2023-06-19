@@ -24,7 +24,7 @@ interface PropsType {
 const defaultTheme = createTheme({
   palette: {
     primary: {
-      main: "#7cb342",
+      main: "#14a37f",
     },
   },
 });
@@ -104,7 +104,6 @@ export default function UserInvitation({setOpen}:PropsType) {
               />
               <Error error={errors?.email} touched={touched?.email} />
               <Button
-                color="primary"
                 type="submit"
                 fullWidth
                 variant="contained"
